@@ -1,0 +1,7 @@
+<div id="<%= dom_id user %>">
+  <ul>
+    <% user.statuses.each do |status| %>
+      <%= render status %>
+    <% end %>
+  </ul>
+</div>

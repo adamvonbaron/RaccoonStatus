@@ -1,0 +1,26 @@
+<%= form_with(model: status) do |form| %>
+  <% if status.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <%= pluralize(status.errors.count, "error") %> prohibited this status from being saved
+      </div>
+
+      <div class="message-body">
+        <ul>
+          <% status.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, class: "label" %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Create status", class: "button is-primary" %>
+  </div>
+<% end %>
