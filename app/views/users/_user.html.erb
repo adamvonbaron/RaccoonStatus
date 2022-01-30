@@ -1,7 +1,32 @@
 <div id="<%= dom_id user %>">
-  <ul>
-    <% user.statuses.each do |status| %>
-      <%= render status %>
+  <div class="section">
+    <div class="is-flex is-justify-content-space-around">
+      <% if user.avatar.present? %>
+        <%= image_tag(current_user.avatar.variant(:bigger_thumb), size: "128x128", class: "image is-128x128") if current_user.avatar.attached? %>
+      <% end %>
+      <div>
+        <div class="title">
+          <%= user.username %>
+        </div>
+        <%= time_tag user.created_at do %>
+          <span>
+            joined <%= time_ago_in_words user.created_at %> ago
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <% if user.statuses.present? %>
+      <% user.statuses.each do |status| %>
+        <div class="section">
+          <%= render status %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="subtitle">
+        This user hasn't shared any statuses yet!
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>

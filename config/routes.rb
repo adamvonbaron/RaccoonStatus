@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   authenticate do
     resources :statuses
-    resources :users, param: :username
+    resources :users, param: :username, only: [:show]
   end
 
   root "statuses#index"

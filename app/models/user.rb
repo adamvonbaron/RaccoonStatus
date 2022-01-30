@@ -52,13 +52,17 @@ class User < ApplicationRecord
   validates :username, presence: {  allow_blank: true }, uniqueness: { allow_blank: true }
   validates :email, presence: true, uniqueness: true
 
-  has_many :statuses, dependent: :destroy
+  has_many :statuses, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :invitations, class_name: "User", as: :invited_by
   has_one :current_status, -> { order(created_at: :desc) }, class_name: "Status"
   
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [64, 64]
+    attachable.variant :bigger_thumb, resize_to_limit: [128, 128]
   end
+
+  # can probably expand this to other things too
+  scope :active, -> { invitation_accepted }
 
   def to_param = username
 end

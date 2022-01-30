@@ -4,6 +4,9 @@
       <div class="navbar-item">
         <%= button_to "Home", root_path, method: :get, class: "button is-primary" %>
       </div>
+      <div class="navbar-item">
+        <%= button_to "Create status", new_status_path, method: :get, class: "button is-warning" %>
+      </div>
     </div>
     <% if user_signed_in? %>
       <div class="navbar-end">
@@ -12,10 +15,10 @@
           <%= link_to current_user.username, user_path(current_user), class: "tag is-large" %>
         </div>
         <div class="navbar-item">
-          <div class="buttons">
-            <%= button_to "Edit", edit_user_registration_path, method: :get, class: "button is-info", disabled: current_page?(edit_user_registration_path) %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "button is-link" %>
-          </div>
+          <%= button_to "Edit", edit_user_registration_path, method: :get, class: "button is-info", disabled: current_page?(edit_user_registration_path) %>
+        </div>
+        <div class="navbar-item">
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "button is-link" %>
         </div>
       </div>
     <% end %>

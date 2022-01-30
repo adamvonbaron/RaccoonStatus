@@ -1,15 +1,10 @@
-<div class="title">Statuses</div>
-
 <div id="statuses">
   <% @users.each do |user| %>
     <% if user.current_status.present? %>
       <%= render user.current_status %>
     <% else %>
-      <span> no status yet for this homie</span>
+      <%= render partial: "statuses/blank_status", locals: { user: user } %>
     <% end %>
-    <p>
-    <%= link_to "Show this status", user.current_status %>
-    </p>
   <% end %>
 </div>
 

@@ -9,5 +9,8 @@ namespace :setup do
     )
 
     user.confirm
+    user.accept_invitation!
+    user.invitation_accepted_at = Time.now
+    user.save
   end
 end

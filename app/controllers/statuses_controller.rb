@@ -3,7 +3,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses or /statuses.json
   def index
-    @users = User.preload(:current_status)
+    @users = User.active.preload(:current_status)
   end
 
   # GET /statuses/1 or /statuses/1.json
