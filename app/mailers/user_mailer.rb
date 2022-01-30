@@ -1,6 +1,8 @@
-class UserMailer < ApplicationMailer
+class UserMailer < Devise::Mailer
   include Devise::Mailers::Helpers
   include DeviseInvitable::Mailer
+
+  default from: "trashpanda@raccoonstatus.biz"
 
   def invitation_instructions(resource, token, opts = {})
     @token = token
