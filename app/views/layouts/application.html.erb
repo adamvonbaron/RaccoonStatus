@@ -10,8 +10,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= button_to "Logout", destroy_user_session_path, class: "button is-danger", method: :delete %>
-    <%= yield %>
+  <body class="has-navbar-fixed-top full-height">
+    <%= render "navbar" %>
+    <div class="pt-2">
+      <%= render "flash" %>
+      <div class="section">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
