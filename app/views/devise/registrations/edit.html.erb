@@ -58,6 +58,11 @@
         <%= f.submit "Update", class: "button is-primary" %>
         <%= link_to "Back", :back, class: "button is-link" %>
       </div>
+      <div class="column is-flex is-justify-content-flex-end">
+        <%= link_to(new_user_invitation_path, class: "button is-secondary") do %>
+          <span> Invite User </span>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
