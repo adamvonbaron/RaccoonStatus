@@ -43,14 +43,23 @@
 #
 
 class User < ApplicationRecord
+  USERNAME_FORMAT = /\A[A-Za-z0-9][A-Za-z0-9\-_.]+\z/i
+
+  # https://api.rubyonrails.org/v7.0/classes/ActiveModel/Validations/ClassMethods.html#method-i-validates
+  EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
-  validates :username, presence: {  allow_blank: true }, uniqueness: { allow_blank: true }
-  validates :email, presence: true, uniqueness: true
+  validates :username,
+    presence: { allow_blank: true },
+    uniqueness: { allow_blank: true },
+    format: { with: USERNAME_FORMAT }
+
+  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_FORMAT }
 
   has_many :statuses, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :invitations, class_name: "User", as: :invited_by

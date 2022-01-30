@@ -1,10 +1,12 @@
 <div id="statuses">
   <% @users.each do |user| %>
-    <% if user.current_status.present? %>
-      <%= render user.current_status %>
-    <% else %>
-      <%= render partial: "statuses/blank_status", locals: { user: user } %>
-    <% end %>
+    <div class="section">
+      <% if user.current_status.present? %>
+        <%= render user.current_status %>
+      <% else %>
+        <%= render partial: "statuses/blank_status", locals: { user: user } %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 

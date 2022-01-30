@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: %i[ show edit update destroy ]
+  before_action :confirm_ownership, only: %i[ update destroy edit ]
 
   # GET /statuses or /statuses.json
   def index
@@ -61,6 +62,10 @@ class StatusesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_status
       @status = Status.find(params[:id])
+    end
+
+    def confirm_ownership
+      return head :unauthorized unless @status.user.eql?(current_user)
     end
 
     # Only allow a list of trusted parameters through.
