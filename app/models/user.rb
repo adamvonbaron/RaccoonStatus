@@ -54,10 +54,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
-  validates :username,
-    presence: { allow_blank: true },
-    uniqueness: { allow_blank: true },
-    format: { with: USERNAME_FORMAT }
+  validates :username, allow_blank: true, uniqueness: true, format: { with: USERNAME_FORMAT }
 
   validates :email, presence: true, uniqueness: true, format: { with: EMAIL_FORMAT }
 
