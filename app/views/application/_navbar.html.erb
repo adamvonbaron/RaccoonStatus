@@ -4,9 +4,11 @@
       <div class="navbar-item">
         <%= button_to "Home", root_path, method: :get, class: "button is-primary" %>
       </div>
-      <div class="navbar-item">
-        <%= button_to "Create status", new_status_path, method: :get, class: "button is-warning" %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="navbar-item">
+          <%= button_to "Create status", new_status_path, method: :get, class: "button is-warning" %>
+        </div>
+      <% end %>
     </div>
     <% if user_signed_in? %>
       <div class="navbar-end">

@@ -3,7 +3,7 @@
     <div class="media">
       <% if user.avatar.attached? %>
         <div class="media-left">
-          <%= image_tag(current_user.avatar.variant(:thumb), size: "64x64", class: "image is-64x64") if current_user.avatar.attached? %>
+          <%= image_tag(user.avatar.variant(:thumb), size: "64x64", class: "image is-64x64") %>
         </div>
       <% end %>
       <div class="media-content">

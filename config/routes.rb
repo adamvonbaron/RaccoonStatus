@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   authenticate do
-    resources :statuses
+    resources :statuses, except: %i[ index ]
     resources :users, param: :username, only: %i[show index]
   end
 
