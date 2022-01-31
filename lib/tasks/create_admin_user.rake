@@ -14,7 +14,6 @@ namespace :setup do
     user.save
 
     admin = Admin.create!(
-      username: ENV.fetch("DEFAULT_ADMIN_USERNAME"),
       password: ENV.fetch("DEFAULT_ADMIN_PASSWORD"),
       password_confirmation: ENV.fetch("DEFAULT_ADMIN_PASSWORD"),
       email: ENV.fetch("DEFAULT_ADMIN_EMAIL")
