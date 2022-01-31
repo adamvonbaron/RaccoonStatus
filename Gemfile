@@ -55,6 +55,7 @@ gem "devise"
 gem "aws-sdk-s3"
 gem 'postmark-rails'
 gem 'devise_invitable'
+gem 'rails_admin'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -80,3 +81,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "sassc-rails"
