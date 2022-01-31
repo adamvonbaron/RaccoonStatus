@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: RaccoonStatus_production
+  database: <%= ENV["DATABASE_NAME"] %>
   username: RaccoonStatus
   password: <%= ENV["RACCOONSTATUS_DATABASE_PASSWORD"] %>
