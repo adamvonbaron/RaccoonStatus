@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  authenticate :admin do
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  end
+
   devise_for :users, path_names: { sign_up: "" }, controllers: {
     registrations: "users/registrations",
     invitations: "users/invitations"
   }
+
+  devise_for :admins, path_names: { sign_up: "" }
 
   authenticate do
     resources :statuses, except: %i[ index ]
