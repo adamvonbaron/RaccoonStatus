@@ -8,6 +8,10 @@
         <div class="navbar-item">
           <%= button_to "Create status", new_status_path, method: :get, class: "button is-warning" %>
         </div>
+      <% else %>
+        <div class="navbar-item">
+          <%= button_to "Login", new_user_session_path, method: :get, class: "button is-warning" %>
+        </div>
       <% end %>
     </div>
     <% if user_signed_in? %>

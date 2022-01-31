@@ -2,7 +2,7 @@
   <div class="section">
     <div class="is-flex is-justify-content-space-around">
       <% if user.avatar.present? %>
-        <%= image_tag(current_user.avatar.variant(:bigger_thumb), size: "128x128", class: "image is-128x128") if current_user.avatar.attached? %>
+        <%= image_tag(user.avatar.variant(:bigger_thumb), size: "128x128", class: "image is-128x128") %>
       <% end %>
       <div>
         <div class="title">
